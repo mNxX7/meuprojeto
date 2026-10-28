@@ -1,0 +1,272 @@
+/* 1) VARIÁVEIS: as cores e medidas ficam num lugar só.
+      Quer mudar o visual do site inteiro? Troque os valores aqui. */
+:root {
+  --fundo: #eef2f8;
+  --superficie: #ffffff;
+  --tinta: #14213d;
+  --tinta-suave: #4a5775;
+  --azul: #2347c5;
+  --azul-escuro: #1a3598;
+  --marca-texto: #ffd23f;
+  --linha: #d5dceb;
+  --raio: 12px;
+
+  --fonte-titulo: Georgia, "Times New Roman", serif;
+  --fonte-texto: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 2) RESET: tira as margens padrão do navegador e deixa as
+      medidas mais previsíveis. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* 3) CORPO DA PÁGINA */
+body {
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Container central: limita a largura e centraliza o conteúdo.
+   (Usa a classe "pagina" que você coloca no <div> do page.tsx) */
+.pagina {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+/* 4) TÍTULOS E TEXTO */
+h1,
+h2 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  margin: 2rem 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--tinta-suave);
+  max-width: 65ch; /* linhas curtas são mais fáceis de ler */
+}
+
+/* 5) CABEÇALHO: o destaque da página */
+header {
+  background: var(--azul);
+  color: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: var(--raio);
+  border-bottom: 6px solid var(--marca-texto);
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+
+header p {
+  color: #dbe3ff;
+  font-size: 1.1rem;
+}
+
+/* 6) SEÇÕES (componente Secao) */
+.secao {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* Tudo que NÃO for cartão ocupa a linha inteira (título, texto) */
+.secao > :not(.cartao) {
+  grid-column: 1 / -1;
+}
+
+/* Título da seção com efeito de "marca-texto" amarelo embaixo */
+.secao > h2 {
+  margin-bottom: 0;
+  justify-self: start;
+  background: linear-gradient(
+    transparent 62%,
+    var(--marca-texto) 62%
+  );
+}
+
+/* 7) CARTÕES DE PROJETO (componente Cartao) */
+.cartao {
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+  transition: border-color 0.2s;
+}
+
+.cartao:hover {
+  border-color: var(--azul);
+}
+
+.cartao h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Etiquetas de tecnologia (opcional — veja a dica do Cartao.js) */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+}
+
+.tag {
+  background: var(--marca-texto);
+  color: var(--tinta);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+}
+
+/* 8) FORMULÁRIOS (Contato e Tarefas) */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="text"] {
+  flex: 1 1 220px;
+  padding: 0.6rem 0.8rem;
+  font: inherit;
+  color: var(--tinta);
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 8px;
+}
+
+input[type="text"]:focus {
+  outline: 3px solid var(--marca-texto);
+  border-color: var(--azul);
+}
+
+/* 9) BOTÕES (Adicionar, Enviar, Curtidas, Ver Detalhes) */
+button {
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--azul);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: var(--azul-escuro);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--marca-texto);
+  outline-offset: 2px;
+}
+
+/* 10) LISTA DE TAREFAS */
+ul {
+  list-style: none;
+  margin-top: 0.75rem;
+}
+
+li {
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+li label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--azul);
+}
+
+/* 11) RODAPÉ */
+footer {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: #dbe3ff;
+  background: var(--tinta);
+  border-radius: var(--raio);
+}
+
+/* 12) CELULAR: ajustes para telas pequenas */
+@media (max-width: 600px) {
+  header {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+/* Respeita quem desativou animações no sistema */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+a {
+  color: var(--azul);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.cartao a {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.foto {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--marca-texto);
+}
