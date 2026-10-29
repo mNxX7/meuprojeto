@@ -360,3 +360,54 @@ nav a:last-child:hover {
   outline: 3px solid var(--marca-texto);
   outline-offset: 2px;
 }
+
+/* ===== PÁGINA 404 ===== */
+.erro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.erro h1 {
+  margin-top: 0;
+}
+
+.erro p {
+  margin-inline: auto; /* centraliza o texto, que tem largura máxima */
+}
+
+/* Número gigante com o marca-texto amarelo */
+.erro-codigo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(5rem, 20vw, 9rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--azul);
+  background: linear-gradient(transparent 70%, var(--marca-texto) 70%);
+}
+
+/* Botão azul reutilizável */
+.botao {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  background: var(--azul);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.botao:hover {
+  background: var(--azul-escuro);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.botao:focus-visible {
+  outline: 3px solid var(--marca-texto);
+  outline-offset: 2px;
+}
