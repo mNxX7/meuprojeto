@@ -1,5 +1,5 @@
 export default function Rodape() {
-    const ano = new Date().getFullYear();
+    const ano = 2026
     console.log(ano)
     return(
         <footer>
