@@ -2,6 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projetos } from "../../componentes/Dados";
 
+export function generateStaticParams() {
+  return projetos.map((p) => ({ id: String(p.id) }));
+}
+
 export default async function Projeto({ params }) {
   const { id } = await params;
   const projeto = projetos.find((p) => p.id === Number(id));
@@ -12,7 +16,7 @@ export default async function Projeto({ params }) {
 
   return (
     <div className="pagina">
-      <Link href="/">← Voltar</Link>
+      <Link href="/" className="voltar">← Voltar</Link>
       <h1>{projeto.titulo}</h1>
       <p>{projeto.descricao}</p>
       <div className="tags">
