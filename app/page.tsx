@@ -1,4 +1,3 @@
-
 import Cabecalho from "./componentes/Cabecalho";
 import Rodape from "./componentes/Rodape";
 import Cartao from "./componentes/Cartao";
@@ -8,6 +7,7 @@ import Curtidas from "./componentes/Curtidas";
 import Detalhes from "./componentes/Detalhes";
 import Contato from "./componentes/Contato";
 import Tarefas from "./componentes/Tarefas";
+import BuscarCep from "./componentes/BuscarCep";
 import Link from "next/link";
 
 export default function Home() {
@@ -60,6 +60,9 @@ export default function Home() {
         <br />
 
         <Detalhes />
+        <br />
+
+        <BuscarCep />
         <br />
 
         <Rodape />
