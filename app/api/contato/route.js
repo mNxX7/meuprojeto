@@ -1,3 +1,9 @@
+
+export async function GET() {
+    return Response.json({
+         mensagem: "API de contato funcionando!" 
+        });
+    }
 export async function POST(request) {
     try {
         const dados = await request.json();
