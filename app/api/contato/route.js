@@ -1,24 +1,25 @@
+import { NextResponse } from "next/server";
+import { adicionarContato } from "../../../lib/contatos";
 
-export async function GET() {
-    return Response.json({
-         mensagem: "API de contato funcionando!" 
-        });
-    }
 export async function POST(request) {
-    try {
-        const dados = await request.json();
+  try {
+    const { nome } = await request.json();
 
-        console.log("Contato recebido:", dados);
-
-        return Response.json({
-            mensagem: `Obrigado, ${dados.nome}! Seu contato foi recebido.`
-        }, { status: 200 });
-
-    } catch (error) {
-        console.error(error);
-
-        return Response.json({
-            erro: "Erro ao receber contato."
-        }, { status: 500 });
+    if (!nome || nome.trim().length < 3) {
+      return NextResponse.json(
+        { erro: "Escreva seu nome completo!" },
+        { status: 400 }
+      );
     }
+
+    await adicionarContato({ nome: nome.trim() });
+
+    return NextResponse.json({ mensagem: "Contato enviado com sucesso!" });
+  } catch (error) {
+    console.error("Erro ao salvar:", error);
+    return NextResponse.json(
+      { erro: "Erro ao salvar no banco." },
+      { status: 500 }
+    );
+  }
 }
