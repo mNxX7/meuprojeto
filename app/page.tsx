@@ -9,13 +9,15 @@ import Contato from "./componentes/Contato";
 import Tarefas from "./componentes/Tarefas";
 import BuscarCep from "./componentes/BuscarCep";
 import Link from "next/link";
+import Formulario from "./componentes/formulario";
 
 export default function Home() {
   const nome = "Manoel";
 
   return (
     <>
-      <nav>
+  <Formulario />
+      {/*<nav>
         <Link href="/">Início</Link>
         <Link href="/projetos">Projetos</Link>
         <Link href="/contatos">Contatos</Link>
@@ -66,7 +68,7 @@ export default function Home() {
         <br />
 
         <Rodape />
-      </div>
+      </div>*/}
     </>
   );
 }
