@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
   <Formulario />
-      {/*<nav>
+      <nav>
         <Link href="/">Início</Link>
         <Link href="/projetos">Projetos</Link>
         <Link href="/contatos">Contatos</Link>
@@ -68,7 +68,7 @@ export default function Home() {
         <br />
 
         <Rodape />
-      </div>*/}
+      </div>
     </>
   );
 }
