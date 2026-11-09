@@ -4,9 +4,10 @@ import { useState } from "react";
 import { collection } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { adicionarPessoa, editarPessoa, deletarPessoa } from "@/lib/pessoa";
+import { getDocs } from "firebase/firestore";
 
 export default function Pessoas() {
-    const [pessoas, setPessoas] = useState("");
+    const [pessoas, setPessoas] = useState([]);
     const [id, setId] = useState("");
     const [nome, setNome] = useState("");
     const [idade, setIdade] = useState("");
@@ -63,7 +64,7 @@ export default function Pessoas() {
                 alert("Erro ao deletar.")
             }
         }
-
+    }
         return (
             <div>
                 <h1>Cadastro</h1>
@@ -97,4 +98,3 @@ export default function Pessoas() {
         )
 
 };
-}
