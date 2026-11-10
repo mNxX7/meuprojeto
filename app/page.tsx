@@ -1,15 +1,15 @@
-import Cabecalho from "./componentes/Cabecalho";
-import Rodape from "./componentes/Rodape";
-import Cartao from "./componentes/Cartao";
-import { projetos } from "./componentes/Dados";
-import Secao from "./componentes/Secao";
-import Curtidas from "./componentes/Curtidas";
-import Detalhes from "./componentes/Detalhes";
-import Contato from "./componentes/Contato";
-import Tarefas from "./componentes/Tarefas";
-import BuscarCep from "./componentes/BuscarCep";
+import Cabecalho from "../componentes/Cabecalho";
+import Rodape from "../componentes/Rodape";
+import Cartao from "../componentes/Cartao";
+import { projetos } from "../componentes/Dados";
+import Secao from "../componentes/Secao";
+import Curtidas from "../componentes/Curtidas";
+import Detalhes from "../componentes/Detalhes";
+import Contato from "../componentes/Contato";
+import Tarefas from "../componentes/Tarefas";
+import BuscarCep from "../componentes/BuscarCep";
 import Link from "next/link";
-import Formulario from "./componentes/formulario";
+import Formulario from "../componentes/formulario";
 
 export default function Home() {
   const nome = "Manoel";
