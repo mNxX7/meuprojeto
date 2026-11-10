@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { db } from "../../lib/firebase";
+import { db } from "../lib/firebase";
 import {
   collection,
   addDoc,
@@ -11,24 +11,21 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
-// fora do componente, para não ser recriada a cada render
 const colecao = collection(db, "tarefas");
 
 export default function Tarefas() {
   const [tarefas, setTarefas] = useState([]);
   const [texto, setTexto] = useState("");
 
-  // fica escutando o banco: sempre que algo mudar, a lista atualiza
   useEffect(() => {
     const parar = onSnapshot(colecao, (resultado) => {
       const lista = resultado.docs.map((d) => ({ id: d.id, ...d.data() }));
       setTarefas(lista);
     });
 
-    return () => parar(); // para de escutar quando sair da tela
+    return () => parar();
   }, []);
 
-  // CRIAR
   async function adicionar(e) {
     e.preventDefault();
     if (!texto.trim()) return;
@@ -37,14 +34,12 @@ export default function Tarefas() {
     setTexto("");
   }
 
-  // MARCAR / DESMARCAR
   async function marcar(tarefa) {
     await updateDoc(doc(db, "tarefas", tarefa.id), {
       concluida: !tarefa.concluida,
     });
   }
 
-  // REMOVER
   async function remover(id) {
     await deleteDoc(doc(db, "tarefas", id));
   }
