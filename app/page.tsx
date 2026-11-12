@@ -16,7 +16,6 @@ export default function Home() {
 
   return (
     <>
-  <Formulario />
       <nav>
         <Link href="/">Início</Link>
         <Link href="/projetos">Projetos</Link>
@@ -48,8 +47,11 @@ export default function Home() {
           tecnologias={p.tecnologias}
         />
           ))}
-        </Secao>
+        
+        <Formulario />
+        <br />
 
+        </Secao>
         <br />
 
         <Contato />
