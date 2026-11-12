@@ -1,4 +1,4 @@
-export default function ListaRepositorios({ repos }) {
+export default function ListaRepos({ repos }) {
   return (
     <ul>
       {repos.map((r) => (
