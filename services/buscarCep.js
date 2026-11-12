@@ -1,13 +1,25 @@
-import { montarUrlViaCep } from "@/lib/buscacep";
+import { consultarViaCep } from "@/lib/buscacep";
+
+export function limparCep(cep) {
+  return String(cep || "").replace(/\D/g, "");
+}
+
+export function validarCep(cep) {
+  return limparCep(cep).length === 8;
+}
 
 export async function buscarEnderecoPorCep(cep) {
-  const resposta = await fetch(montarUrlViaCep(cep));
+  const cepLimpo = limparCep(cep);
 
-  if (!resposta.ok) {
-    throw new Error("Erro ao consultar o CEP.");
+  if (!validarCep(cepLimpo)) {
+    throw new Error("CEP inválido! Digite 8 números.");
   }
 
-  const dados = await resposta.json();
+  const { ok, dados } = await consultarViaCep(cepLimpo);
+
+  if (!ok) {
+    throw new Error("Erro ao consultar o CEP.");
+  }
 
   if (dados.erro) {
     throw new Error("CEP não encontrado!");

@@ -5,7 +5,6 @@ export const projetos = [
     descricao: "Descrição do projeto.",
     tecnologias: ["Next.js", "React"],
   },
-  // cole aqui os outros projetos
 ];
 
 export function encontrarProjeto(id) {

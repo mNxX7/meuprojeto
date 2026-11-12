@@ -1,13 +1,23 @@
-import { montarUrlRepos } from "@/lib/github";
+import { consultarRepos } from "@/lib/github";
 
-export async function buscarRepositorios(usuario) {
-  const resposta = await fetch(montarUrlRepos(usuario), {
-    next: { revalidate: 3600 },
-  });
+const USUARIO_GITHUB = "mvmendoncas";
 
-  if (!resposta.ok) {
+export function limparUsuario(usuario) {
+  return String(usuario || "").trim();
+}
+
+export async function buscarRepositorios(usuario = USUARIO_GITHUB) {
+  const usuarioLimpo = limparUsuario(usuario);
+
+  if (!usuarioLimpo) {
+    throw new Error("Usuário inválido!");
+  }
+
+  const { ok, dados } = await consultarRepos(usuarioLimpo);
+
+  if (!ok) {
     throw new Error("Não foi possível carregar os repositórios.");
   }
 
-  return await resposta.json();
+  return dados;
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { validarCep  } from "@/lib/buscacep";
 import { buscarEnderecoPorCep } from "@/services/buscarCep";
 import CartaoCep from "./CartaoCep";
 
@@ -12,12 +11,6 @@ export default function BuscarCep() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-
-        if (!validarCep(cep)) {
-            setAviso("Digite um CEP válido!");
-            setEndereco(null);
-            return;
-        }
 
         try {
             const dados = await buscarEnderecoPorCep(cep);

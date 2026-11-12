@@ -1,4 +1,12 @@
-import { adicionarContato, limparNome, validarNome } from "@/lib/contatos";
+import { adicionarContato } from "@/lib/contatos";
+
+export function limparNome(nome) {
+  return String(nome || "").trim();
+}
+
+export function validarNome(nome) {
+  return limparNome(nome).length >= 3;
+}
 
 export async function enviarContato(nome) {
   if (!validarNome(nome)) {
