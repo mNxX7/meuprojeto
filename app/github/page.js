@@ -25,3 +25,7 @@ export default async function GitHub() {
     </div>
   );
 }
+ <div className="pagina">
+  <h1>Teste final de merge, pull, request</h1>
+  <p>Este é meu teste de integração no github</p>
+  </div>
