@@ -25,6 +25,3 @@ export default async function GitHub() {
     </div>
   );
 }
-    <div className="pagina">
-      <h1>Teste de pull e request github</h1>
-      </div>
